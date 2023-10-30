@@ -26,10 +26,16 @@
               <ion-item class="active">
                 <ion-label><ion-icon name="stats-chart-outline"></ion-icon>Statistiques</ion-label>
               </ion-item>
+              <!-- <ion-item>
+                <ion-label><ion-icon name="stats-chart-outline"></ion-icon>Partager </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label><ion-icon name="stats-chart-outline"></ion-icon>Inviter </ion-label>
+              </ion-item> -->
               <ion-item>
                 <ion-icon name="settings-outline"></ion-icon> Parametres
               </ion-item>
-              <ion-item>
+              <ion-item  (click)="logout()">
                 <ion-icon name="exit-outline"></ion-icon> Se deconnecter
               </ion-item>
             </ion-list>

@@ -6,3 +6,28 @@ ion-fab-button {
   --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   --color: black;
 }
+
+
+ion-avatar{
+  width: 130px;
+  height: 130px;
+}
+
+.preview{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.fallback{
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #bfbfbf;
+
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
