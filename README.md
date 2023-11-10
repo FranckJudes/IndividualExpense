@@ -1,6 +1,6 @@
 # IndividualExpense
 
-# Comment Executer le projet : 
+# How to run project : 
 1. Cloner le projet (Soit Github Desktop ou git)
 2. se deplacer dans le repertoire du projet en cmdline
 3. ensuite taper `npm install`
