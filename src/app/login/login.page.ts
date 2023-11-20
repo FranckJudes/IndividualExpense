@@ -14,21 +14,42 @@ export class LoginPage implements OnInit {
   credentials!: FormGroup;
   
   constructor(
-    private fb : FormBuilder,
+   
     private loadingController : LoadingController,
     private alertController : AlertController,
     private authService : AuthService,
-    private router : Router
+    private router : Router,
+    public formBuilder: FormBuilder
 
   ) { }
 
   ngOnInit() {
-    this.credentials = this.fb.group({
-      email : ['', [Validators.required, Validators.email]],
-      password : ['', [Validators.required, Validators.minLength(6)]],
+    // this.credentials = this.fb.group({
+    //   email : ['', [Validators.required, Validators.email]],
+    //   password : ['', [Validators.required, Validators.minLength(6)]],
 
-    })
+    // })
+    this.credentials = this.formBuilder.group({
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+        ],
+      ],
+      password: ['', [
+        Validators.minLength(6),
+        Validators.required,
+      ]
+      ],
+    });
   }
+
+  // Control des champs
+    get errorControl() {
+      return this.credentials.controls;
+    }
+
 
   async register(){ 
     const loading =  await this.loadingController.create({

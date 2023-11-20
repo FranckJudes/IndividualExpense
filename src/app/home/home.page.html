@@ -1,38 +1,108 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+<!-- <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
 
-    <ion-title>
-      My APP
-    </ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="logout()">
-          <ion-icon slot="icon-only" name="log-out"> </ion-icon>
-        </ion-button>
-      </ion-buttons>
-    <ion-buttons slot="start">
-        <ion-menu-button menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
+        <ion-title>
+            My APP
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="logout()">
+                <ion-icon slot="icon-only" name="log-out"> </ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="start">
+            <ion-menu-button menu="main-menu"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Bonjour et Bienvenue</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <div class="preview">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Bonjour et Bienvenue</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <div class="preview">
+            <ion-avatar (click)="changerImage()">
+                <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+                <ng-template #placeholder_avatar>
+                    <div class="fallback">
+                        <p>Selectionner l'avatar</p>
+                    </div>
+                </ng-template>
+            </ion-avatar>
+        </div>
+    </ion-content>
+</ion-content> -->
 
-      <ion-avatar (click)="changerImage()">
-          <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
-          <ng-template #placeholder_avatar>
-              <div class="fallback">
-                <p>Selectionner l'avatar</p>
-              </div>
-          </ng-template>
-      </ion-avatar>
+
+<ion-header class="ion-no-border" [translucent]="true">
+    <ion-toolbar mode="md">
+        <ion-buttons slot="start">
+            <ion-button>
+                <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+                <ion-menu-button menu="main-menu"></ion-menu-button>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-buttons slot="end">
+            <ion-button class="search-btn">
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+            <ion-button>
+                <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+            </ion-button>
+            <ion-buttons slot="end">
+                <ion-button (click)="logout()">
+                    <ion-icon slot="icon-only" name="log-out"> </ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div id="container">
+        <strong>What's up, Everyone!</strong>
+        <span class="sub-header">Categories</span>
+
+        <!-- <ion-slides pager="false" [options]="sliderConfig">
+            <ion-slide class="categories">
+                <div class="categories-buttons business">
+                    <span class="task-count">
+                        {{todoService.getCount('business')}} task<ng-container *ngIf="todoService.getCount('business') > 1">s</ng-container>
+                    </span>
+                    <span class="categories-name"> Business</span>
+                    <ion-progress-bar mode="ios" [value]="todoService.getCategoryProgressCount('business')"></ion-progress-bar>
+                </div>
+            </ion-slide>
+            <ion-slide class="categories">
+                <div class="categories-buttons personal">
+                    <span class="task-count">
+                        {{todoService.getCount('personal')}} task<ng-container *ngIf="todoService.getCount('personal') > 1">s</ng-container>
+                    </span>
+                    <span class="categories-name"> Personal</span>
+                    <ion-progress-bar mode="ios" [value]="todoService.getCategoryProgressCount('personal')"></ion-progress-bar>
+                </div>
+            </ion-slide>
+        </ion-slides> -->
+
+        <span class="todays-header">Today's Expense</span>
+        <div class="task-list">
+            <!-- <app-task *ngFor="let task of todoService.list" [task]="task" (onEditTaskClicked)="openEditPage($event)"></app-task> -->
+        </div>
     </div>
-      
-  </ion-content>
+
+    <ion-fab id="trigger-button" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button mode="ios">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-modal mode="ios" trigger="trigger-button" [isOpen]="false" [breakpoints]="[0.1, 0.5, 1]" [initialBreakpoint]="1">
+        <ng-template>
+            <!-- <app-new-task (onNewTaskClicked)="addNewTask($event)"></app-new-task> -->
+        </ng-template>
+    </ion-modal>
+
 </ion-content>

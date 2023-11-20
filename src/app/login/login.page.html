@@ -1,23 +1,68 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-title>login</ion-title>
+    </ion-toolbar>
+</ion-header> -->
 
-<ion-content class="ion-padding">
+<!-- <ion-content class="ion-padding">
     <form [formGroup]="credentials" (ngSubmit)="login()">
 
-      <ion-item fill="solid" class="ion-margin-bottom">
-        <ion-input type="email" placeholder="Email" formControlName="email"> </ion-input>
-        <!-- <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors"> email est invalide </ion-note> -->
-      </ion-item>
-      <ion-item fill="solid" class="ion-margin-bottom">
-        <ion-input type="password" placeholder="password" formControlName="password"> </ion-input>
-        <!-- <ion-note slot="error" *ngIf="(password?.dirty || password?.touched) && password?.errors"> email est invalide </ion-note> -->
-      </ion-item>
+        <ion-item fill="solid" class="ion-margin-bottom">
+            <ion-input type="email" placeholder="Email" formControlName="email"> </ion-input> -->
+<!-- <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors"> email est invalide </ion-note> -->
+<!-- </ion-item>
+<ion-item fill="solid" class="ion-margin-bottom">
+    <ion-input type="password" placeholder="password" formControlName="password"> </ion-input> -->
+<!-- <ion-note slot="error" *ngIf="(password?.dirty || password?.touched) && password?.errors"> email est invalide </ion-note> -->
+<!-- </ion-item> -->
 
 
-      <ion-button type="submit" expand="full" > Login</ion-button>
-      <ion-button type="button" expand="full" (click)="register()"> Creer un compte</ion-button>
+<!-- <ion-button type="submit" expand="full"> Login</ion-button>
+<ion-button type="button" expand="full" (click)="register()"> Creer un compte</ion-button>
+</form>
+</ion-content> -->
+
+<ion-content [fullscreen]="true">
+    <div class="header">
+        <ion-title class="title" size="large">Welcome Back</ion-title>
+        <p class="subtitle">Sign in to access your account</p>
+    </div>
+    <form [formGroup]="credentials" novalidate>
+        <div class="ion-padding">
+
+            <ion-item>
+                <ion-input placeholder="username" formControlName="email" class="input"></ion-input>
+                <ion-icon name="person-outline"></ion-icon>
+            </ion-item>
+
+            <div style="padding-top: -26px; padding-bottom: 16px;" *ngIf="credentials.controls['email']?.touched && credentials.controls['email']?.invalid">
+                <ion-text *ngIf="credentials.controls['email']?.errors?.['required']" class="errorInput" color="danger">Email is required.</ion-text>
+                <ion-text *ngIf="credentials.controls['email']?.errors?.['pattern']" class="errorInput" color="danger">Please provide a valid email.</ion-text>
+            </div>
+
+            <ion-item>
+                <ion-input type="password" placeholder="password" formControlName="password" class="input"></ion-input>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </ion-item>
+
+            <div style="padding-top: -26px; padding-bottom: 16px;" *ngIf="credentials.controls['password']?.touched && credentials.controls['password']?.invalid">
+                <ion-text *ngIf="credentials.controls['password']?.errors?.['required']" class="errorInput" color="danger">Password is required.</ion-text>
+                <ion-text *ngIf="credentials.controls['password']?.errors?.['pattern']" class="errorInput" color="danger">Password must contain at least one character</ion-text>
+            </div>
+
+            <div class="forgotpassword">
+                <a [routerLink]="['/forgot-password']" style="color: #FFC33F">Forgot Password?</a>
+            </div>
+        </div>
+
+        <div class="signupLink">
+            <p class="p">New member? <a [routerLink]="['/register']" style="color: #FFC33F">Sign up now</a></p>
+        </div>
+
+        <ion-fab *ngIf="credentials.valid" vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
+            <ion-fab-button type="submit" (click)="login()">
+                <ion-icon name="chevron-forward"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
     </form>
 </ion-content>

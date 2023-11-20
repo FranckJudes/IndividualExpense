@@ -5,6 +5,7 @@ import { AuthService } from '../Service/Authentification/auth.service';
 import { AvatarService } from "../Service/Avatar/avatar.service";
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -19,7 +20,7 @@ export class HomePage  {
     private loadingController : LoadingController,
     private alertController : AlertController,
     private avatarService : AvatarService,
-    private router :  Router
+    private router :  Router,
     ) {
       this.avatarService.getUserProfile().then((userData) => {
         this.profile = userData;
@@ -63,7 +64,10 @@ export class HomePage  {
         
         if(!result){  
          this.showAlert('Echec','Probleme lors de l\'ajout de l\'avatar');
-        }
+        }{
+          this.router.navigateByUrl('/home',{ replaceUrl: true})
+          // this.showAlert('Reussi','Mise a jour avec success');
+        } 
 
       }else{
         this.showAlert('Erreur de Telechargement','Un probleme est survenue')
