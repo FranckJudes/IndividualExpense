@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true">
+    <div class="header">
+        <ion-title class="title" size="large">Choose your profile photo</ion-title>
+        <p class="subtitle">And enter your username</p>
+    </div>
+
+    <ion-content>
+        <div class="preview">
+            <ion-avatar (click)="changerImage()">
+                <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+                <ng-template #placeholder_avatar>
+                    <div class="fallback">
+                        <p>Selectionner l'avatar</p>
+                    </div>
+                </ng-template>
+            </ion-avatar>
+        </div>
+        <div class="preview2">
+            <ion-item fill="solid" class="ion-margin-bottom">
+                <ion-input type="username" placeholder=" Votre Nom D'utilisateur"> </ion-input>
+            </ion-item>
+        </div>
+        <ion-fab horizontal="end" style="margin-bottom: 50px;">
+            <ion-fab-button [routerLink]="['/home']">
+                <ion-icon name="chevron-forward"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+    </ion-content>
+
+
+</ion-content>

@@ -6,25 +6,25 @@ import {
   canActivate
 } from '@angular/fire/auth-guard';
 
-// const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
-// const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
-    //  ...canActivate(redirectLoggedInToHome)
+     ...canActivate(redirectLoggedInToHome)
   },
   
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    // ...canActivate(redirectUnauthorizedToLogin)
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
-    path: '**',
-    redirectTo: '',
+    path: '',
+    redirectTo: 'landing',
     pathMatch: 'full'
   },
   {
@@ -32,8 +32,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   },
   {
-    path: '',
+    path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'register-avatar',
+    loadChildren: () => import('./pages/register-avatar/register-avatar.module').then( m => m.RegisterAvatarPageModule)
   },
 ];
 

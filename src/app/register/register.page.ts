@@ -56,11 +56,12 @@ export class RegisterPage implements OnInit {
       message: 'Veuillez patientez...'
     });
     await loading.present();
+    
     const user =  await  this.authService.Inscrire(this.credentials.value);
     await loading.dismiss();
 
     if (user) {
-      this.router.navigateByUrl('/home',{ replaceUrl: true})
+      this.router.navigateByUrl('/register-avatar',{ replaceUrl: true})
     }else{
         this.showAlert('Echec d\'inscription','S\'il vous plait verifier les identifiants');
     }

@@ -25,16 +25,17 @@ ion-item {
 
 .signupLink {
     display: flex;
-    margin: auto;
-    flex-direction: row;
-    align-content: center;
     justify-content: center;
-    position: absolute;
+    margin: auto;
+    // transform: translateY(-50%);
+    //   position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     width: 80%;
+    top: 20;
 
+    //   margin: auto;  111
     .p {
         font-size: 0.9em;
     }

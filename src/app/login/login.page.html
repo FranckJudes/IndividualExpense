@@ -56,9 +56,10 @@
         </div>
 
         <div class="signupLink">
-            <p class="p">New member? <a [routerLink]="['/register']" style="color: #FFC33F">Sign up now</a></p>
+            <p class="p">New member?
+                <a [routerLink]="['/register']" style="color: #FFC33F">Sign up now</a>
+            </p>
         </div>
-
         <ion-fab *ngIf="credentials.valid" vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
             <ion-fab-button type="submit" (click)="login()">
                 <ion-icon name="chevron-forward"></ion-icon>
