@@ -24,7 +24,9 @@ export class RegisterAvatarPage implements OnInit {
   ngOnInit() {
     this.avatarService.getUserProfile().then((userData) => {
       this.profile = userData;
+      console.log(this.profile);
     });
+
   }
 
   async changerImage(){
@@ -46,7 +48,7 @@ export class RegisterAvatarPage implements OnInit {
       if(!result){  
        this.showAlert('Echec','Probleme lors de l\'ajout de l\'avatar');
       }{
-        this.router.navigateByUrl('/home',{ replaceUrl: true})
+        // this.router.navigateByUrl('/home',{ replaceUrl: true})
         // this.showAlert('Reussi','Mise a jour avec success');
       } 
 

@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'register-avatar',
     loadChildren: () => import('./pages/register-avatar/register-avatar.module').then( m => m.RegisterAvatarPageModule)
   },
+  {
+    path: 'sidemenu',
+    loadChildren: () => import('./pages/sidemenu/sidemenu.module').then( m => m.SidemenuPageModule)
+  },
 ];
 
 @NgModule({
